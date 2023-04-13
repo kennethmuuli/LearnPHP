@@ -108,11 +108,15 @@
     // recursive(10);
 
     class box {
-        public $width;
+        //private, protected, public, "static" e. jagatud vaartus
+        private $width;
         public $length;
         public $height;
         public $color;
         public $material;
+        static $count;
+
+        
 
         public function open(){
             echo 'box is open';
@@ -121,11 +125,53 @@
         public function close(){
             echo 'box is closed';
         }
+
+        public function setWidth($width){
+            if($width > 0) {
+                $this -> width = $width;
+            } else {
+                echo 'Width cannot be negative';     
+            } 
+        }
     }
 
     $box = new Box();
-    $box -> width = 10;
+    $box::$count = 1; //vaata kuidas viidatakse static muutujale
+    $box -> setWidth(10);
     $box -> height = 10;
     $box -> length = 10;
     $box -> color = 'red';
+    $box -> material = 'wood';
+    //$box -> open();
+
+    $box2 = new Box();
+    $box2::$count = 2; //vaata kuidas viidatakse static muutujale
+    $box -> setWidth(10);
+    $box2 -> height = 12;
+    $box2 -> length = 12;
+    $box2 -> color = 'blue';
+    $box2 -> material = 'clay';
+    //$box2 -> close();
+
+    class MetalBox extends Box {
+        public $material = 'metal';
+        public $conductivity;
+
+        public function electrify(){
+            echo 'wuush';
+        }
+
+        //override naide / PS! keyword final voimaldab parent klassis piirata overridingut
+        public function open(){
+            echo "something else opened";
+        }
+    }
+
+    $box3 = new MetalBox();
+    Box::$count = 3; //static muutuja alternatiiv
+
+    var_dump($box::$count);
+
+
+
 ?>
