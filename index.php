@@ -51,59 +51,81 @@
 
     // var_dump ($num); // var_dump funk. prindib valja kogu info
     
-    $num = 10;
+    // $num = 10;
 
-    if ($num > 10) {
-        echo 'suurem';
-    } elseif ($num < 10) {
-        echo 'väiksem';
-    } else {
-        echo 'võrdne';
-    }
+    // if ($num > 10) {
+    //     echo 'suurem';
+    // } elseif ($num < 10) {
+    //     echo 'väiksem';
+    // } else {
+    //     echo 'võrdne';
+    // }
 
-    switch ($num) {
-        case 1:
-            echo 'üks';
-            break;
-        case 2:
-            echo 'kaks';
-            break;
-        default:
-            echo 'default';
-            break;       
-    }
+    // switch ($num) {
+    //     case 1:
+    //         echo 'üks';
+    //         break;
+    //     case 2:
+    //         echo 'kaks';
+    //         break;
+    //     default:
+    //         echo 'default';
+    //         break;       
+    // }
 
-    for ($i=0; $i<10; $i++) {
-        echo "kordus $i\n";
-    }
+    // for ($i=0; $i<10; $i++) {
+    //     echo "kordus $i\n";
+    // }
 
-    while ($num<10) {
-        echo "while loop";
-    }
+    // while ($num<10) {
+    //     echo "while loop";
+    // }
 
-    do {
-        echo "do while";
-    } while ($num<10);
+    // do {
+    //     echo "do while";
+    // } while ($num<10);
 
-    //tavaline funktsioon
-    function hello($name) {
-        return "hello $name";
-    }
+    // //tavaline funktsioon
+    // function hello($name) {
+    //     return "hello $name";
+    // }
 
-    //voimalik ette anda oodatud muutuja ja return tyybid
-    function hello_2 (string $name): string {
-        return "hello $name";
-    }
+    // //voimalik ette anda oodatud muutuja ja return tyybid
+    // function hello_2 (string $name): string {
+    //     return "hello $name";
+    // }
 
-    $text = hello_2 ('Kenneth');
-    echo $text;
+    // $text = hello_2 ('Kenneth');
+    // echo $text;
 
-    //rekursiivne funktsioon
-    function recursive ($i) {
-        if ($i>0) {
-            recursive ($i - 1);
+    // //rekursiivne funktsioon
+    // function recursive ($i) {
+    //     if ($i>0) {
+    //         recursive ($i - 1);
+    //     }
+    //     echo $i;
+    // }
+    // recursive(10);
+
+    class box {
+        public $width;
+        public $length;
+        public $height;
+        public $color;
+        public $material;
+
+        public function open(){
+            echo 'box is open';
         }
-        echo $i;
+    
+        public function close(){
+            echo 'box is closed';
+        }
     }
-    recursive(10);
+
+    $box = new Box();
+    $box -> width = 10;
+    $box -> height = 10;
+    $box -> length = 10;
+    $box -> color = 'red';
 ?>
