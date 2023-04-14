@@ -1,6 +1,5 @@
 <?php require 'partials/header.php' ?>
 <?php 
-$name = 'Kenneth';
 ?>
     Home
     <h1>Hello <?=$name?></h1>
