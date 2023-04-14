@@ -195,35 +195,76 @@
     /* #region ------------- TRAITS ------------- */
 
     //trait voimaldab erinevaid omadusi sattida erinevate klasside kylge, mis pole omavahel muidu yldse seotud
-    trait SomeLogic {
-        public $prop;
+    // trait SomeLogic {
+    //     public $prop;
 
-        public function method(){
-            echo $this->prop;
+    //     public function method(){
+    //         echo $this->prop;
+    //     }
+    // }
+
+    // //traite voib klassile ka mitu tykki kylge panna
+    // trait SomeLogic2 {
+    //     public $prop2;
+
+    //     public function method2(){
+    //         echo $this->prop;
+    //     }
+    // }
+
+    // class Something {
+    //     use SomeLogic, SomeLogic2;
+    // }
+
+    // class SomethingElse {
+    //     use SomeLogic;
+    // }
+
+    // $obj = new Something();
+    // $obj -> method();
+    // $obj -> method2();
+
+
+    /* #endregion */
+
+    /* #region ------------- INTERFACES ------------- */
+
+    class Job {
+        //constructori ees PHPs alati __
+        private $logger;
+        public function __construct(Logger $logger){
+            $this->logger = $logger;
+        }
+
+        public function task (){
+            
+            for($i=0;$i<10;$i++){
+
+                $this -> logger -> log($i);
+            }
         }
     }
 
-    //traite voib klassile ka mitu tykki kylge panna
-    trait SomeLogic2 {
-        public $prop2;
+    //interface on justkui leping, mis ytleb ara, et koik classid, mis Logger interface rakendavad peavad sisaldama jargnevaid funktsioone
+    interface Logger {
+        public function log($message);
+    }
 
-        public function method2(){
-            echo $this->prop;
+    class ConsoleLogger implements Logger {
+        public function log($message){
+            echo $message."\n";
         }
     }
 
-    class Something {
-        use SomeLogic, SomeLogic2;
+    class NothingLogger implements Logger {
+        public function log($message){
+            
+        }
     }
 
-    class SomethingElse {
-        use SomeLogic;
-    }
+    $logger = new ConsoleLogger();
+    $job = new Job($logger);
+    $job -> task();
 
-    $obj = new Something();
-    $obj -> method();
-    $obj -> method2();
-
-
-    /* #engregion */
+    /* #endregion */
 ?>
