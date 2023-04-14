@@ -1,0 +1,17 @@
+{
+    "name": "kenneth_muuli/learn-php",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kenneth Muuli",
+            "email": "kenneth.muuli@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^6.2"
+    }
+}
