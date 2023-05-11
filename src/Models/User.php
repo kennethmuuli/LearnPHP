@@ -11,7 +11,7 @@ class User extends Model{
     public $password;
 
     static function auth(){
-        if($_SESSION['userId']){
+        if(isset ($_SESSION['userId']) && $_SESSION['userId']){
             return self::find($_SESSION['userId']);
         }
         return false;
